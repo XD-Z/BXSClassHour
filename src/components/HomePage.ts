@@ -15,6 +15,11 @@ export function HomePage(statistics: Statistics) {
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-xl font-bold text-gray-800">数据统计</h2>
         <div class="flex gap-2">
+          <label id="import-csv-btn" class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors cursor-pointer">
+            <span>📥</span>
+            <span>导入数据</span>
+            <input type="file" id="import-file" accept=".csv" class="hidden" />
+          </label>
           <button id="export-csv-btn" class="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
             <span>📊</span>
             <span>导出Excel</span>

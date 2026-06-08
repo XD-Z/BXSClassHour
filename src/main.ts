@@ -19,6 +19,7 @@ import {
   deleteClassRecord,
 } from './storage/db';
 import { exportToCSV, exportToText } from './utils/export';
+import { importFromCSV } from './utils/import';
 
 let currentTab = 'home';
 let students: Student[] = [];
@@ -230,6 +231,38 @@ function attachEventListeners() {
           console.error('保存排序失败:', error);
           alert('保存排序失败');
         }
+      }
+    });
+  }
+
+  // 导入功能
+  const importFileInput = document.getElementById('import-file') as HTMLInputElement;
+  if (importFileInput) {
+    importFileInput.addEventListener('change', async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      
+      try {
+        const importedStudents = await importFromCSV(file);
+        
+        const confirmed = confirm(`即将导入 ${importedStudents.length} 名学员数据，是否继续？`);
+        if (!confirmed) {
+          importFileInput.value = '';
+          return;
+        }
+        
+        // 批量添加学员
+        for (const student of importedStudents) {
+          await addStudent(student);
+        }
+        
+        alert(`成功导入 ${importedStudents.length} 名学员！`);
+        render();
+      } catch (error) {
+        console.error('导入失败:', error);
+        alert(`导入失败: ${(error as Error).message}`);
+      } finally {
+        importFileInput.value = '';
       }
     });
   }
