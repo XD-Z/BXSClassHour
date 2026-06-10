@@ -103,7 +103,7 @@ export function RecordModal(students: { id: string; name: string }[]) {
             <input type="date" id="record-date" required class="w-full px-3 py-3 border border-gray-300 rounded-lg" value="${today}">
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">天数 *</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1">课时数 *</label>
             <div class="flex items-center gap-2">
               <button type="button" id="record-hours-decrease" class="w-12 h-12 bg-gray-200 hover:bg-gray-300 rounded-lg text-2xl font-bold text-gray-700 transition-colors">-</button>
               <input type="number" id="record-hours" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-center text-xl font-semibold" value="2">

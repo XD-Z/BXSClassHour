@@ -49,14 +49,14 @@ export function HomePage(statistics: Statistics) {
         <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
           <div class="flex items-center gap-2 text-amber-700">
             <span class="text-xl">⚠️</span>
-            <span class="font-semibold">有 ${statistics.expiringStudents} 名学员的课时即将到期，请及时提醒！</span>
+            <span class="font-semibold">有 ${statistics.expiringStudents} 名学员需要关注（日期临近或课时不足 10 节）</span>
           </div>
         </div>
       ` : `
         <div class="bg-green-50 border border-green-200 rounded-xl p-4">
           <div class="flex items-center gap-2 text-green-700">
             <span class="text-xl">✅</span>
-            <span class="font-semibold">暂无即将到期的学员</span>
+            <span class="font-semibold">暂无需要关注的学员</span>
           </div>
         </div>
       `}

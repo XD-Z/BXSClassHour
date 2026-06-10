@@ -10,6 +10,8 @@ export function Sidebar(activeTab: string) {
     { id: 'students', label: '学员管理', icon: '👥' },
     { id: 'records', label: '课时记录', icon: '📝' },
     { id: 'expiring', label: '即将到期', icon: '⏰' },
+    { id: 'vacation-students', label: '寒暑假学员', icon: '🌴' },
+    { id: 'vacation-records', label: '寒暑课时', icon: '🌞' },
   ];
 
   return `

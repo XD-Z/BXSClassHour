@@ -1,6 +1,6 @@
 import type { ClassRecord, Student } from '../types';
 
-export function RecordList(records: ClassRecord[], students: Student[]) {
+export function VacationRecordList(records: ClassRecord[], students: Student[]) {
   const studentMap = new Map(students.map(s => [s.id, s]));
 
   const formatDate = (dateStr: string) => {
@@ -12,9 +12,12 @@ export function RecordList(records: ClassRecord[], students: Student[]) {
 
   return `
     <div class="p-6">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-gray-800">课时记录</h2>
-        <button id="add-record-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-800">寒暑课时记录</h2>
+          <p class="text-sm text-gray-500 mt-1">独立记录，不计入主系统</p>
+        </div>
+        <button id="vacation-add-record-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
           + 添加记录
         </button>
       </div>
@@ -33,7 +36,7 @@ export function RecordList(records: ClassRecord[], students: Student[]) {
           <tbody>
             ${sortedRecords.length === 0 ? `
               <tr>
-                <td colspan="5" class="px-4 py-8 text-center text-gray-500">暂无课时记录</td>
+                <td colspan="5" class="px-4 py-8 text-center text-gray-500">暂无寒暑课时记录</td>
               </tr>
             ` : sortedRecords.map(record => {
               const student = studentMap.get(record.studentId);
@@ -44,7 +47,7 @@ export function RecordList(records: ClassRecord[], students: Student[]) {
                   <td class="px-4 py-3">${formatDate(record.date)}</td>
                   <td class="px-4 py-3">${record.description || '-'}</td>
                   <td class="px-4 py-3">
-                    <button class="delete-record-btn text-red-600 hover:text-red-800" data-id="${record.id}" data-student-id="${record.studentId}" data-hours="${record.hours}">删除</button>
+                    <button class="vacation-delete-record-btn text-red-600 hover:text-red-800" data-id="${record.id}" data-student-id="${record.studentId}" data-hours="${record.hours}">删除</button>
                   </td>
                 </tr>
               `;
