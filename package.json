@@ -1,6 +1,6 @@
 {
   "name": "课时记录软件",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "培训机构课时记录管理系统",
   "scripts": {
     "dev": "vite",
